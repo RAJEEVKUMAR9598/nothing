@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Sweety ❤️</title>
 
-  <!-- Handwritten font -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body ontouchstart="playMusic()" onclick="playMusic()">
+<body>
 
-<audio id="bgMusic" loop>
+<!-- 🔐 PASSWORD SCREEN -->
+<div id="lockScreen">
+  <input type="password" id="passInput" placeholder="Enter password ❤️">
+  <button onclick="unlock()">Open</button>
+</div>
+
+<!-- ▶ START SCREEN -->
+<div id="musicBtn" class="hidden" onclick="startExperience()">
+  ❤️ Tap to Begin
+</div>
+
+<audio id="bgMusic" preload="auto">
   <source src="music/inna-sona.mp3" type="audio/mpeg">
 </audio>
 
@@ -21,33 +30,27 @@
 <div class="stars"></div>
 <div class="petals"></div>
 
-<div class="container">
+<div class="container hidden">
+  <h1 class="glow">Sweety ❤️</h1>
 
-  <h1 class="glow fade">Sweety ❤️</h1>
-
-  <!-- Shayari -->
   <p class="typewriter" id="loveText"></p>
 
-  <!-- Image slider -->
-  <div class="slider fade">
+  <!-- ✅ SIMPLE SLIDER ONLY -->
+  <div class="slider">
     <img id="slide" src="images/img1.jpg">
   </div>
 
-  <!-- Statement -->
-  <h2 class="statement fade">
+  <h2 class="statement">
     I choose you.<br>
     Today. Tomorrow. Always.
   </h2>
 
-  <!-- Ring -->
   <div class="ring">💍</div>
 
-  <!-- Handwritten signature -->
   <div class="handwritten">
     Forever Yours ❤️<br>
     <span class="name">— Rajeev</span>
   </div>
-
 </div>
 
 <script src="script.js"></script>
