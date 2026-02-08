@@ -8,25 +8,60 @@
 body {
   min-height: 100vh;
   background: radial-gradient(circle at top, #1b1f3b, #000);
-  overflow: hidden;
   color: #fff;
-
-  /* 🎞 B/W to Color */
-  filter: grayscale(100%);
-  animation: colorReveal 3s ease forwards;
-  animation-delay: 3s;
+  overflow: hidden;
 }
 
-@keyframes colorReveal {
-  to { filter: grayscale(0%); }
+/* 🔐 Lock Screen */
+#lockScreen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #ff4d6d, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#lockScreen input {
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  border: none;
+  margin-bottom: 15px;
+  width: 220px;
+  text-align: center;
+}
+#lockScreen button {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1.1rem;
+  background: #fff;
 }
 
+/* ▶ Start */
+#musicBtn {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #ff4d6d, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  z-index: 900;
+}
+
+.hidden { display: none; }
+
+/* Overlay */
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.4);
 }
 
+/* Main Content */
 .container {
   position: relative;
   z-index: 5;
@@ -40,12 +75,13 @@ body {
 }
 
 .typewriter {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin: 15px auto;
   min-height: 70px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
+/* ✅ SLIDER ONLY */
 .slider {
   width: 240px;
   height: 240px;
@@ -54,63 +90,32 @@ body {
   overflow: hidden;
   box-shadow: 0 0 25px rgba(255,255,255,0.6);
 }
-
 .slider img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: zoom 6s infinite alternate;
-}
-
-@keyframes zoom {
-  to { transform: scale(1.12); }
 }
 
 .statement {
   font-size: 1.8rem;
   margin-top: 20px;
-  line-height: 1.4;
 }
 
-.fade {
-  animation: fadeIn 2s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 💍 Ring */
 .ring {
   font-size: 2.5rem;
   margin-top: 15px;
   animation: sparkle 2s infinite;
 }
-
 @keyframes sparkle {
-  0% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); }
 }
 
-/* 🖋 Handwritten */
 .handwritten {
   font-family: 'Great Vibes', cursive;
   font-size: 2.2rem;
   margin-top: 22px;
-  opacity: 0;
-  animation: writeIn 2s ease forwards;
-  animation-delay: 6s;
 }
-
-.name {
-  font-size: 1.8rem;
-}
-
-@keyframes writeIn {
-  to { opacity: 1; }
-}
+.name { font-size: 1.8rem; }
 
 /* 🌌 Stars */
 .stars span {
@@ -119,20 +124,18 @@ body {
   border-radius: 50%;
   animation: twinkle 3s infinite alternate;
 }
-
 @keyframes twinkle {
   from { opacity: 0.2; }
   to { opacity: 1; }
 }
 
-/* 🌹 Petals */
+/* 🌹 + ❤️ */
 .petals span {
   position: fixed;
   top: -20px;
   font-size: 22px;
   animation: fall 7s linear infinite;
 }
-
 @keyframes fall {
   to {
     transform: translateY(110vh) rotate(360deg);
