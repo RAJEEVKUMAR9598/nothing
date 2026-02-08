@@ -1,15 +1,28 @@
-/* 🎵 Music */
-const music = document.getElementById("bgMusic");
-let played = false;
-
-function playMusic() {
-  if (!played) {
-    music.play();
-    played = true;
+/* 🔐 PASSWORD */
+const PASSWORD = "sweety";
+function unlock() {
+  const val = document.getElementById("passInput").value;
+  if (val === PASSWORD) {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("musicBtn").classList.remove("hidden");
+  } else {
+    alert("Hint: her nickname ❤️");
   }
 }
 
-/* 💖 Shayari Typewriter */
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+const container = document.querySelector(".container");
+
+/* ▶ START */
+function startExperience() {
+  music.play().catch(() => {});
+  btn.style.display = "none";
+  container.classList.remove("hidden");
+  startTypewriter();
+}
+
+/* 💖 HINDI SHAYARI */
 const text =
   "तुमसे मोहब्बत कोई सवाल नहीं है,\n" +
   "ये तो एक फैसला है…\n" +
@@ -17,35 +30,37 @@ const text =
   "रूह से किया है। ❤️";
 
 let i = 0;
-const speed = 55;
-
-function typeText() {
+function startTypewriter() {
+  const el = document.getElementById("loveText");
   if (i < text.length) {
-    document.getElementById("loveText").innerHTML +=
-      text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+    el.innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
     i++;
-    setTimeout(typeText, speed);
+    setTimeout(startTypewriter, 60);
+  } else {
+    startSlider(); // shayari ke baad slider
   }
 }
-typeText();
 
-/* 🖼 Image Slider */
+/* 🖼 SLIDER (ONLY img1 & img2, NO FULLSCREEN) */
 const images = [
   "images/img1.jpg",
-  "images/img2.jpg",
-  "images/img3.jpg"
+  "images/img2.jpg"
 ];
+
 let index = 0;
 const slide = document.getElementById("slide");
 
-setInterval(() => {
-  index = (index + 1) % images.length;
-  slide.src = images[index];
-}, 2800);
+function startSlider() {
+  slide.src = images[0];
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    slide.src = images[index];
+  }, 3500);
+}
 
-/* 🌌 Stars */
+/* 🌌 STARS */
 const starsBox = document.querySelector(".stars");
-for (let i = 0; i < 70; i++) {
+for (let i = 0; i < 50; i++) {
   const star = document.createElement("span");
   star.style.width = star.style.height = Math.random() * 3 + "px";
   star.style.left = Math.random() * 100 + "vw";
@@ -53,13 +68,13 @@ for (let i = 0; i < 70; i++) {
   starsBox.appendChild(star);
 }
 
-/* 🌹 Rose Petals */
+/* 🌹 + ❤️ PETALS */
 const petalBox = document.querySelector(".petals");
 setInterval(() => {
   const petal = document.createElement("span");
-  petal.innerHTML = "🌹";
+  petal.innerHTML = Math.random() > 0.5 ? "🌹" : "❤️";
   petal.style.left = Math.random() * 100 + "vw";
   petal.style.animationDuration = (Math.random() * 3 + 5) + "s";
   petalBox.appendChild(petal);
   setTimeout(() => petal.remove(), 7000);
-}, 450);
+}, 400);
